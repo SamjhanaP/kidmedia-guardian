@@ -1,12 +1,12 @@
-KidMedia Guardian
+**KidMedia Guardian**
 
 Project: KidMedia Guardian — an agent to help parents detect and manage problematic kids’ videos
 
-Overview
+**Overview**
 
 KidMedia Guardian is an agent that analyzes short children’s videos (YouTube Kids or uploaded clips) and automatically flags high-arousal content. The agent provides a parent-friendly summary highlighting visually or audibly intense moments. This project demonstrates the use of video and audio feature extraction combined with a simple human-centered summary.
 
-What It Does
+**What It Does?**
 
 Extracts visual features from videos: motion and brightness.
 
@@ -18,7 +18,7 @@ Generates a parent-friendly summary describing why a video is flagged.
 
 Processes multiple .mp4 or .mov files in a folder automatically.
 
-How It Works
+**How It Works**
 
 Video Feature Extraction
 
@@ -42,7 +42,7 @@ Volume > 0.12
 
 Generates a simple summary like "High visual motion, Fast-paced audio, Loud volume".
 
-Project Structure
+**Project Structure**
 working/
   .virtual_documents/
   data/
@@ -59,7 +59,7 @@ working/
 requirements.txt
 README.md
 
-How to Run
+**How to Run**
 
 Clone the repository.
 
@@ -68,7 +68,7 @@ Install dependencies:
 pip install -r requirements.txt
 
 
-Run the main notebook or script:
+**Run the main notebook or script:**
 
 from src.tools.feature_extractor import extract_visual_features, extract_audio_features
 from src.coordinator_agent import CoordinatorAgent
@@ -80,7 +80,7 @@ print(results)
 
 Results are automatically saved in results/analysis.json.
 
-Current Status
+**Current Status**
 
 Core pipeline implemented for video and audio analysis.
 
@@ -96,7 +96,7 @@ Small demo interface or notebook visualization for parents.
 
 Quantitative evaluation metrics or human-in-the-loop testing.
 
-Dependencies
+**Dependencies**
 
 numpy
 
