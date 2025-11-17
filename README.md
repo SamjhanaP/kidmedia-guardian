@@ -67,7 +67,6 @@ Install dependencies:
 
 pip install -r requirements.txt
 
-
 **Run the main notebook or script:**
 
 from src.tools.feature_extractor import extract_visual_features, extract_audio_features
@@ -76,7 +75,6 @@ from src.coordinator_agent import CoordinatorAgent
 agent = CoordinatorAgent()
 results = agent.analyze_videos_in_folder("/path/to/video/folder")
 print(results)
-
 
 Results are automatically saved in results/analysis.json.
 
@@ -87,14 +85,6 @@ Core pipeline implemented for video and audio analysis.
 Parent-friendly summaries generated.
 
 Multiple videos can be analyzed in a folder.
-
-Optional Features Not Implemented Yet
-
-Suggesting calmer alternative clips or activities.
-
-Small demo interface or notebook visualization for parents.
-
-Quantitative evaluation metrics or human-in-the-loop testing.
 
 **Dependencies**
 
