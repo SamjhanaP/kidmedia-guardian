@@ -1,0 +1,6 @@
+﻿numpy>=1.25
+pandas
+opencv-python
+librosa
+soundfile
+ffmpeg-python
