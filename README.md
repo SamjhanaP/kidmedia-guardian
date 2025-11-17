@@ -28,7 +28,7 @@ Audio Feature Extraction
 
 Uses FFmpeg to convert video to WAV and librosa to compute tempo and RMS volume.
 
-Flagging and Summarization
+**Flagging and Summarization**
 
 Flags videos based on thresholds:
 
