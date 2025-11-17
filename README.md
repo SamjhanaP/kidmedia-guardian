@@ -1,44 +1,111 @@
-# kidmedia-guardian
-ADK-powered agent to flag high-arousal kids’ videos
+KidMedia Guardian
 
-KidMedia Guardian (Prototype)
-This project is an early prototype of a simple tool that analyzes short clips from children’s YouTube channels and estimates whether the visual content appears high-arousal. The goal is to help parents identify fast, overstimulating media and explore calmer alternatives.
-The current version focuses on building an end-to-end pipeline that works inside a Kaggle Notebook. The system extracts frames from a video, processes them with a pretrained CNN, models temporal patterns with an LSTM, and produces a basic prediction. This version does not include full evaluation metrics or audio analysis.
+Project: KidMedia Guardian — an agent to help parents detect and manage problematic kids’ videos
 
-What the System Does?
-  Loads a short video clip that you upload to the Kaggle working directory.
-  Extracts frames using OpenCV.
-  Uses a pretrained ResNet50 model to turn each frame into a feature vector.
-  Feeds the sequence of frame features into an LSTM.
-  Outputs a simple prediction indicating whether the clip seems visually intense.
-  Saves results into results/analysis.json.
+Overview
 
-This notebook represents the core pipeline required for the course deliverables.
+KidMedia Guardian is an agent that analyzes short children’s videos (YouTube Kids or uploaded clips) and automatically flags high-arousal content. The agent provides a parent-friendly summary highlighting visually or audibly intense moments. This project demonstrates the use of video and audio feature extraction combined with a simple human-centered summary.
 
-What Has Been Implemented?
+What It Does
 
-Feature extraction
+Extracts visual features from videos: motion and brightness.
 
-  OpenCV for frame sampling
-  
-  ResNet50 (pretrained on ImageNet) for visual feature extraction
-  
-  Basic normalization and resizing functions
-  
-Sequence modeling
+Extracts audio features from videos: tempo (BPM) and volume.
 
-  A lightweight LSTM model built with Keras
-  
-  Trained on sample clips manually added to the notebook
+Flags videos if they exceed thresholds for motion, brightness, tempo, or volume.
 
-  Designed to classify clips into “high arousal” or “not high arousal”
-  
-Pipeline and orchestration
+Generates a parent-friendly summary describing why a video is flagged.
 
-  A simple structured workflow placed inside src/tools/feature_extractor.py and src/tools/analyzer.py
-  
-  Final predictions saved in a JSON file for easy reference
-  
-Demonstration clips
+Processes multiple .mp4 or .mov files in a folder automatically.
 
-  Short clips from children’s YouTube channels such as Cocomelon, Bluey, Ms Rachel, Lalafun, and a few high-movement or high-brightness examples
+How It Works
+
+Video Feature Extraction
+
+Uses OpenCV to compute average brightness and frame-to-frame motion.
+
+Audio Feature Extraction
+
+Uses FFmpeg to convert video to WAV and librosa to compute tempo and RMS volume.
+
+Flagging and Summarization
+
+Flags videos based on thresholds:
+
+Motion > 18
+
+Brightness > 200
+
+BPM > 140
+
+Volume > 0.12
+
+Generates a simple summary like "High visual motion, Fast-paced audio, Loud volume".
+
+Project Structure
+working/
+  .virtual_documents/
+  data/
+  results/
+    analysis.json
+  demo/
+    sample_clips/
+  src/
+    __init__.py
+    tools/
+      __init__.py
+      feature_extractor.py
+  main.ipynb
+requirements.txt
+README.md
+
+How to Run
+
+Clone the repository.
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Run the main notebook or script:
+
+from src.tools.feature_extractor import extract_visual_features, extract_audio_features
+from src.coordinator_agent import CoordinatorAgent
+
+agent = CoordinatorAgent()
+results = agent.analyze_videos_in_folder("/path/to/video/folder")
+print(results)
+
+
+Results are automatically saved in results/analysis.json.
+
+Current Status
+
+Core pipeline implemented for video and audio analysis.
+
+Parent-friendly summaries generated.
+
+Multiple videos can be analyzed in a folder.
+
+Optional Features Not Implemented Yet
+
+Suggesting calmer alternative clips or activities.
+
+Small demo interface or notebook visualization for parents.
+
+Quantitative evaluation metrics or human-in-the-loop testing.
+
+Dependencies
+
+numpy
+
+pandas
+
+opencv-python
+
+librosa
+
+soundfile
+
+ffmpeg-python
