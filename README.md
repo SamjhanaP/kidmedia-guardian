@@ -6,18 +6,12 @@ This project is an early prototype of a simple tool that analyzes short clips fr
 The current version focuses on building an end-to-end pipeline that works inside a Kaggle Notebook. The system extracts frames from a video, processes them with a pretrained CNN, models temporal patterns with an LSTM, and produces a basic prediction. This version does not include full evaluation metrics or audio analysis.
 
 What the System Does?
-
-Loads a short video clip that you upload to the Kaggle working directory.
-
-Extracts frames using OpenCV.
-
-Uses a pretrained ResNet50 model to turn each frame into a feature vector.
-
-Feeds the sequence of frame features into an LSTM.
-
-Outputs a simple prediction indicating whether the clip seems visually intense.
-
-Saves results into results/analysis.json.
+  Loads a short video clip that you upload to the Kaggle working directory.
+  Extracts frames using OpenCV.
+  Uses a pretrained ResNet50 model to turn each frame into a feature vector.
+  Feeds the sequence of frame features into an LSTM.
+  Outputs a simple prediction indicating whether the clip seems visually intense.
+  Saves results into results/analysis.json.
 
 This notebook represents the core pipeline required for the course deliverables.
 
